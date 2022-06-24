@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "A server part of the Restaurant Order Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ognjen Vujasinovic",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
