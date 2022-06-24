@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node app",
-    "dev": "nodemone app"
+    "dev": "nodemon app"
   },
   "author": "Ognjen Vujasinovic",
   "license": "ISC",
