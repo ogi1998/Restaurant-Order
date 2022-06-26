@@ -10,12 +10,14 @@ import restaurantRoutes from './routes/restaurants.js';
 const app = express();
 
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
-app.use('/restaurants', restaurantRoutes);
+app.use('/restaurant', restaurantRoutes);
+
+
+
 
 const CONNECTION_URL = process.env.DB;
 const PORT = process.env.PORT;
