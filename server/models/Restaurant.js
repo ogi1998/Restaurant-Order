@@ -1,5 +1,37 @@
 import mongoose from "mongoose";
 
+const mealSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Meal name is required']
+    },
+    description: {
+        type: String,
+        required: [true, 'Meal description is required']
+    },
+    type: {
+        type: String,
+        required: [true, 'Meal type is required'],
+        enum: ['breakfast', 'lunch', 'dinner', 'snack']
+    },
+    ingredients: [
+        {
+            type: String,
+            required: [true, 'Meal needs to have ingredients']
+        }
+    ],
+    categories: [
+        {
+            type: String,
+            required: [true, 'Meal needs to have categories']
+        }
+    ],
+    price: {
+        type: Number,
+        required: [true, 'Meal needs to have price']
+    }
+});
+
 const restaurantSchema = mongoose.Schema({
     name: {
         type: String,
@@ -8,7 +40,6 @@ const restaurantSchema = mongoose.Schema({
     },
     description: {
         type: String,
-        unique: [true, 'Description must be unique'],
         required: [true, 'Description is required'] 
     },
     deliveryTime: {
@@ -32,32 +63,7 @@ const restaurantSchema = mongoose.Schema({
         required: [true, 'Active is required'],
         default: true
     },
-    meals: [
-        {
-            name: {
-                type: String,
-                required: [true, 'Meal name is required']
-            },
-            description: {
-                type: String,
-                required: [true, 'Meal description is required']
-            },
-            type: {
-                type: String,
-                required: [true, 'Meal type is required']
-            },
-            categories: [
-                {
-                    type: String,
-                    required: [true, 'Meal needs to have categories']
-                }
-            ],
-            price: {
-                type: Number,
-                required: [true, 'Meal needs to have price']
-            }
-        }
-    ]
+    meals: [mealSchema]
 });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);

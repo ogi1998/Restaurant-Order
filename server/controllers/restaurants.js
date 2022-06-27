@@ -20,3 +20,13 @@ export const postRestaurant = async (req, res) => {
         res.status(400).json({status: 'error', message: error.message});
     }
 };
+
+export const deleteRestaurant = async (req, res) => {
+    try {
+        await Restaurant.deleteOne({_id: req.params.id});
+
+        res.status(204);
+    } catch(error) {
+        res.status(400).json({status: 'error', message: error.message});
+    }
+}
