@@ -12,6 +12,7 @@ export const registerPost = async (req, res) => {
         const user = await User.create({...req.body});
 
         const token = signJWT(user._id);
+        console.log(req.headers);
         // usually we put it in cookies, cant do the same here
 
         res.status(201).json({
@@ -30,6 +31,7 @@ export const loginPost = async (req, res) => {
         const {username, password} = req.body;
         const user = await User.login(username, password);
         const token = signJWT(user._id);
+        console.log(req.headers);
         // usually we put it in cookies, cant do the same here
 
         res.status(200).json({

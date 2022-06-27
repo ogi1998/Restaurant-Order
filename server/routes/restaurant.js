@@ -1,10 +1,11 @@
 import express from 'express';
 
 import { deleteRestaurant, getRestaurants, postRestaurant } from '../controllers/restaurants.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', getRestaurants);
+router.get('/', protect, getRestaurants);
 
 router.post('/', postRestaurant);
 
