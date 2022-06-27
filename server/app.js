@@ -5,7 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import restaurantRoutes from './routes/restaurants.js';
+import restaurantRoutes from './routes/restaurant.js';
+import userRoutes from './routes/user.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 app.use('/restaurant', restaurantRoutes);
+app.use('/user', userRoutes);
 
 
 

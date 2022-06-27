@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -72,4 +72,4 @@ userSchema.statics.login = async function (username, password) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;
