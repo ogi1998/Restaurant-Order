@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;500;700&display=swap');
 
 *, *::after, *::before {
     margin: 0;
@@ -9,6 +9,7 @@
 :root {
     --color-black: #000;
     --color-white: #fff;
+    --color-white-pink: #EFDDDD;
     --color-yellow: #FFA336;
     --color-yellow-light: #FFAC4B;
     --color-red: #9C002F;
