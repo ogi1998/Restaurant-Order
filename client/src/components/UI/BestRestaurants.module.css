@@ -2,6 +2,8 @@
   background-color: var(--color-red);
   width: 100%;
   text-align: center;
+  border-bottom-left-radius: 5rem;
+  border-bottom-right-radius: 5rem;
 }
 
 .restaurants__title {
