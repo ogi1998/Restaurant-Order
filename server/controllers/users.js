@@ -1,5 +1,6 @@
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
+import { getLoginErrors, getErrors } from './errorController.js';
 
 const signJWT = id => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -22,7 +23,7 @@ export const registerPost = async (req, res) => {
         });
 
     } catch(error) {
-        res.status(400).json({status: 'error', message: error.message});
+        res.status(400).json({status: 'error', message: getErrors(error, User)});
     }
 }; 
 
@@ -31,8 +32,6 @@ export const loginPost = async (req, res) => {
         const {username, password} = req.body;
         const user = await User.login(username, password);
         const token = signJWT(user._id);
-        console.log(req.headers);
-        // usually we put it in cookies, cant do the same here
 
         res.status(200).json({
             status: 'success',
@@ -41,6 +40,6 @@ export const loginPost = async (req, res) => {
         })
 
     } catch(error) {
-
+        res.status(400).json({status: 'fail', message: getLoginErrors(error)});
     }
 };

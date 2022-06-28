@@ -12,13 +12,11 @@ export const protect = async (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         next();
       } catch (error) {
-        res.status(401)
-        throw new Error('Not Authorized');
+        res.status(401).json({status: 'fail', message: 'Not authorized'});
       }
     }
   
     if (!token) {
-      res.status(401)
-      throw new Error('Not authorized, no token');
+      res.status(401).json({status: 'fail', message: 'Not authorized, no token'});
     }
 };
