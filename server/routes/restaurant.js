@@ -7,12 +7,13 @@ const router = express.Router();
 
 router.get('/', protect, getRestaurants);
 
-router.post('/', postRestaurant);
+router.post('/', protect, postRestaurant);
 
-router.delete('/:id', deleteRestaurant);
+router.delete('/:id', protect, deleteRestaurant);
 
-router.get('/:id/meals', getMeals);
-router.get('/:id/meals/:id2', getMeal);
+router.get('/:id/meals', protect, getMeals);
+
+router.get('/:id/meals/:id2', protect, getMeal);
 
 
 export default router;
