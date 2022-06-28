@@ -41,6 +41,12 @@
   background-color: var(--color-white-pink);
   left: 20%;
   top: -27.5%;
+  transition: .5s ease;
+}
+
+.restaurants__item:hover::before {
+  /* transform: skewY(15deg) translateY(-3rem); */
+  transform: rotateZ(30deg) translateY(-5rem);
 }
 
 .restaurants__item__title {

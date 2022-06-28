@@ -32,7 +32,7 @@
   background-color: var(--color-yellow);
   position: absolute;
   z-index: 1;
-  top: 14%;
+  top: 12%;
 }
 
 .footer__navigation__item {
@@ -48,7 +48,7 @@
   list-style-type: none;
   font-size: 2rem;
   color: var(--color-white);
-  margin-top: 2rem;
+  margin: 4rem 0;
 }
 
 .footer__menu__item {
