@@ -11,7 +11,6 @@ import Navbar from './Navbar'
 const Header = () => {
   return (
     <header className={classes.header}>
-        <Navbar />
         <section className={classes.header__main}>
             <div className={classes.header__main__left}>
                 <div className={classes.header__text__container}>
