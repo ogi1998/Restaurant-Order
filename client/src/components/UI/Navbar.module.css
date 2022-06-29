@@ -25,9 +25,11 @@
     padding: .75rem 2rem;
     border-radius: 1rem;
     transition: .5s ease-in;
+    border: none;
 }
 .nav__item:hover {
     background-color: var(--color-red-light);
+    cursor: pointer;
 }
 .nav__item__dark {
     background-color: var(--color-red-dark);

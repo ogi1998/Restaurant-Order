@@ -89,6 +89,11 @@
     right: 20%;
     top: 45%;
 }
+.header__img__whiskey:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,1);
+    transform: scale(1.1);
+    border-radius: 50%;
+}
 
 .header__img__wine {
     width: 15rem;
@@ -96,3 +101,10 @@
     top: 62.5%;
     right: 5%;
 }
+
+.header__img__wine:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,1);
+    transform: scale(1.1);
+    border-radius: 50%;
+}
+

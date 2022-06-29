@@ -6,8 +6,6 @@ import imgWhiskey from '../../img/landing/3.png';
 import imgWine from '../../img/landing/4.png';
 import imgEggs from '../../img/landing/5.png';
 
-import Navbar from './Navbar'
-
 const Header = () => {
   return (
     <header className={classes.header}>
