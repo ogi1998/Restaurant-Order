@@ -1,34 +1,25 @@
 import Footer from "./components/UI/Footer";
-import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/UI/Navbar";
-import { useState } from "react";
-
-
-import './App.css';
 import Landing from "./components/pages/Landing";
 
+import { Route, Routes } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { uiActions } from "./store/uiSlice";
+
+import './App.css';
+
 const App = () => {
+  const dispatch = useDispatch();
 
-  const [formType, setFormType] = useState('');
-
-  const showSignIn = () => {
-    document.body.style.overflow = "hidden"
-    setFormType('signin');
-  }
-  const showSignUp = () => {
-    document.body.style.overflow = "hidden"
-    setFormType('signup');
-  }
-  const hideModal = () => {
-    document.body.style.overflow = "auto";
-    setFormType('');
-  }
+  const ShowSignIn = () => dispatch(uiActions.showSignIn());
+  const ShowSignUp = () => dispatch(uiActions.showSignUp());
 
   return (
     <>
-    <Navbar onShowSignUp={showSignUp} onShowSignIn={showSignIn} />
+    <Navbar onShowSignIn={ShowSignIn} onShowSignUp={ShowSignUp}  />
     <Routes>
-      <Route path="/" element={<Landing formType={formType} hideModal={hideModal} />} />
+      <Route path="/" element={<Landing />} />
     </Routes>
     <Footer />
     </>

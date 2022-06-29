@@ -5,20 +5,28 @@ import Header from "../UI/Header";
 import Offers from "../UI/Offers";
 import BestRestaurants from "..//UI/BestRestaurants";
 
-const Landing = (props) => {
+import { useDispatch, useSelector } from "react-redux";
+import { uiActions } from "../../store/uiSlice";
+
+const Landing = () => {
+    const dispatch = useDispatch();
+
+    const loginRegisterFormType = useSelector(state => state.ui.loginRegisterFormType);
+
+    const hideModal = () => dispatch(uiActions.hideForm()); 
 
   return (
     <>
-    {props.formType === 'signin' &&
+    {loginRegisterFormType === 'signin' &&
         <ReactPortal wrapperId='modal'>
-            <Modal onHideModal={props.hideModal} title='Sign In'>
+            <Modal onHideModal={hideModal} title='Sign In'>
                 <Form isLogin={true} />
             </Modal>
         </ReactPortal>
     }
-        {props.formType === 'signup' &&
+        {loginRegisterFormType === 'signup' &&
         <ReactPortal wrapperId='modal'>
-            <Modal onHideModal={props.hideModal} title='Sign Up'>
+            <Modal onHideModal={hideModal} title='Sign Up'>
                 <Form isLogin={false} />
             </Modal>
         </ReactPortal>

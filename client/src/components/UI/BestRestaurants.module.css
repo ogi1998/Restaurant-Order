@@ -45,7 +45,6 @@
 }
 
 .restaurants__item:hover::before {
-  /* transform: skewY(15deg) translateY(-3rem); */
   transform: rotateZ(30deg) translateY(-5rem);
 }
 
