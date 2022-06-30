@@ -1,10 +1,18 @@
 import classes from './Navbar.module.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHouse, faAt, faAddressBook} from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { uiActions } from "../../store/uiSlice";
+import { userActions } from '../../store/userSlice';
 
-const Navbar = (props) => {
+const Navbar = () => {
   const token = useSelector(state => state.user.token);
+
+  const dispatch = useDispatch();
+
+  const showSignIn = () => dispatch(uiActions.showSignIn());
+  const showSignUp = () => dispatch(uiActions.showSignUp());
+  const signOut = () => dispatch(userActions.logoutUser());
   return (
     <nav className={classes.nav}>
         <h1 className={classes.nav__logo}>Cloggy's</h1>
@@ -14,10 +22,11 @@ const Navbar = (props) => {
             <a href='/' className={classes.nav__item}><FontAwesomeIcon icon={faAddressBook} /> Contacts</a>
             {token === '' && 
             <>
-            <button onClick={props.onShowSignIn}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign in</button>
-            <button onClick={props.onShowSignUp}  className={`${classes.nav__item} ${classes.nav__item__light}`}>Sign up</button>
+            <button onClick={showSignIn}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign in</button>
+            <button onClick={showSignUp}  className={`${classes.nav__item} ${classes.nav__item__light}`}>Sign up</button>
             </>
           }   
+          {token !== '' && <button onClick={signOut}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign Out</button>}
         </div>
     </nav>
   )

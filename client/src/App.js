@@ -1,27 +1,24 @@
 import Footer from "./components/UI/Footer";
 import Navbar from "./components/UI/Navbar";
 import Landing from "./components/pages/Landing";
-
-import { Route, Routes } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
-import { uiActions } from "./store/uiSlice";
-
-import './App.css';
 import Overview from "./components/pages/Overview";
 
+import './App.css';
+
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const App = () => {
-  const dispatch = useDispatch();
+  const token = useSelector(state => state.user.token);
 
-  const ShowSignIn = () => dispatch(uiActions.showSignIn());
-  const ShowSignUp = () => dispatch(uiActions.showSignUp());
 
+  // Navigating doesnt work
   return (
     <>
-    <Navbar onShowSignIn={ShowSignIn} onShowSignUp={ShowSignUp}  />
+    <Navbar/>
     <Routes>
+      <Route path="/overview" element={token === '' ? <Navigate to='/' /> : <Overview />} />
       <Route path="/" element={<Landing />} />
-      <Route path="/overview" element={<Overview />} />
     </Routes>
     <Footer />
     </>

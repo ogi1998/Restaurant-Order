@@ -5,13 +5,15 @@ import { useRef } from 'react';
 import { loginUser, registerUser } from '../../store/userActions';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector((state) => state.ui.loginRegisterError);
-  const loginRegisterFormType = useSelector(state => state.ui.loginRegisterFormType);
-
-  console.log(error);
+  const loginRegisterFormType = useSelector(
+    (state) => state.ui.loginRegisterFormType
+  );
 
   const registerRef = useRef({});
 
@@ -28,11 +30,14 @@ const Form = () => {
       })
     );
 
+    if (error === '') {
+      navigate('/overview');
+    }
   };
   const onRegisterHandler = async (event) => {
+    event.preventDefault();
     const { firstName, lastName, username, password, email, passwordConfirm } =
       registerRef.current;
-    event.preventDefault();
 
     dispatch(
       registerUser({
@@ -44,15 +49,17 @@ const Form = () => {
         passwordConfirm: passwordConfirm.value,
       })
     );
+
+    if (error === '') {
+      navigate('/overview');
+    }
   };
 
   return (
     <>
       {loginRegisterFormType === 'signin' && (
         <form className={classes.form} onSubmit={onLoginHandler}>
-          {error && (
-            <div className={classes.form__error}>{error}</div>
-          )}
+          {error && <div className={classes.form__error}>{error}</div>}
           <div className={classes.form__control}>
             <label className={classes.form__label}>Username</label>
             <input
@@ -78,9 +85,7 @@ const Form = () => {
       )}
       {loginRegisterFormType === 'signup' && (
         <form className={classes.form} onSubmit={onRegisterHandler}>
-          {error && (
-            <div className={classes.form__error}>{error}</div>
-          )}
+          {error && <div className={classes.form__error}>{error}</div>}
           <div className={classes.form__control}>
             <label className={classes.form__label}>First Name</label>
             <input
