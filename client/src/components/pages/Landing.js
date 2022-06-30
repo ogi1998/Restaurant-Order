@@ -13,21 +13,25 @@ const Landing = () => {
 
     const loginRegisterFormType = useSelector(state => state.ui.loginRegisterFormType);
 
-    const hideModal = () => dispatch(uiActions.hideForm()); 
+    const error = useSelector(state => state.ui.loginRegisterError);
+
+    const hideModal = () => {
+        dispatch(uiActions.hideForm()); 
+    }
 
   return (
     <>
     {loginRegisterFormType === 'signin' &&
         <ReactPortal wrapperId='modal'>
             <Modal onHideModal={hideModal} title='Sign In'>
-                <Form isLogin={true} />
+                <Form isLogin={true} error={error}/>
             </Modal>
         </ReactPortal>
     }
         {loginRegisterFormType === 'signup' &&
         <ReactPortal wrapperId='modal'>
             <Modal onHideModal={hideModal} title='Sign Up'>
-                <Form isLogin={false} />
+                <Form isLogin={false} error={error} />
             </Modal>
         </ReactPortal>
     }   

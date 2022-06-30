@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   loginRegisterFormType: '',
+  loginRegisterError: ''
 };
 
 const uiSlice = createSlice({
@@ -16,7 +17,11 @@ const uiSlice = createSlice({
     },
     hideForm(state) {
       state.loginRegisterFormType = '';
+      state.loginRegisterError = '';
     },
+    addError(state, action) {
+      state.loginRegisterError = action.payload.error
+  }
   },
 });
 

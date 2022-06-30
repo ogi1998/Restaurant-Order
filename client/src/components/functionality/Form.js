@@ -2,7 +2,16 @@ import classes from './Form.module.css';
 
 import {useRef} from 'react';
 
+import {loginUser} from '../../store/userActions';
+
+import {useDispatch, useSelector} from 'react-redux';
+
 const Form = (props) => {
+
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.user.token);
+    const error = useSelector(state => state.user.error);
+
 
     const loginUsernameRef = useRef();
     const loginPasswordRef = useRef();
@@ -10,25 +19,19 @@ const Form = (props) => {
     const onLoginHandler = async event => {
         event.preventDefault();
 
-        const res = await fetch('http://localhost:5000/user/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json' 
-            },
-            body: JSON.stringify({username: loginUsernameRef.current.value, password: loginPasswordRef.current.value})
-        })
-
-        const data = await res.json();
-
-        console.log(data);
-
+        dispatch(loginUser({
+        username: loginUsernameRef.current.value,
+        password: loginPasswordRef.current.value}));
     };
+    if(error) {
+        console.log(error);
+    }
 
   return (
     <>
     {props.isLogin && 
     <form className={classes.form} onSubmit={onLoginHandler}>
+        {props.error && <div className={classes.form__error}>{props.error}</div>}
         <div className={classes.form__control}>
             <label className={classes.form__label}>Username</label>
             <input ref={loginUsernameRef} className={classes.form__input} type='text'/>
@@ -42,6 +45,7 @@ const Form = (props) => {
     }
     {!props.isLogin &&
     <form className={classes.form}>
+        {props.error && <div className={classes.form__error}>{props.error}</div>}
         <div className={classes.form__control}>
             <label className={classes.form__label}>First Name</label>
             <input className={classes.form__input} type='text' />
