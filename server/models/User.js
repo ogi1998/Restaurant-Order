@@ -2,11 +2,6 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: [true, 'Username must be unique'],
-    required: [true, 'Username is required'],
-  },
   firstName: {
     type: String,
     required: [true, 'First name is required'],
@@ -15,6 +10,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Last name is required'],
   },
+  username: {
+    type: String,
+    unique: [true, 'Username must be unique'],
+    required: [true, 'Username is required'],
+  },
+
   email: {
     type: String,
     unique: [true, 'Email must be unique'],

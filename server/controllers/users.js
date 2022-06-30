@@ -13,7 +13,6 @@ export const registerPost = async (req, res) => {
         const user = await User.create({...req.body});
 
         const token = signJWT(user._id);
-        console.log(req.headers);
         // usually we put it in cookies, cant do the same here
 
         res.status(201).json({
@@ -40,6 +39,6 @@ export const loginPost = async (req, res) => {
         })
 
     } catch(error) {
-        res.status(400).json({status: 'fail', message: getLoginErrors(error)});
+        res.status(400).json({status: 'error', message: getLoginErrors(error)});
     }
 };

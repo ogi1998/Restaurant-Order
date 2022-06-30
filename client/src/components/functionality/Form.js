@@ -1,78 +1,142 @@
 import classes from './Form.module.css';
 
-import {useRef} from 'react';
+import { useRef } from 'react';
 
-import {loginUser} from '../../store/userActions';
+import { loginUser, registerUser } from '../../store/userActions';
 
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Form = (props) => {
+const Form = () => {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.ui.loginRegisterError);
+  const loginRegisterFormType = useSelector(state => state.ui.loginRegisterFormType);
 
-    const dispatch = useDispatch();
-    const token = useSelector(state => state.user.token);
-    const error = useSelector(state => state.user.error);
+  console.log(error);
 
+  const registerRef = useRef({});
 
-    const loginUsernameRef = useRef();
-    const loginPasswordRef = useRef();
+  const loginUsernameRef = useRef();
+  const loginPasswordRef = useRef();
 
-    const onLoginHandler = async event => {
-        event.preventDefault();
+  const onLoginHandler = async (event) => {
+    event.preventDefault();
 
-        dispatch(loginUser({
+    dispatch(
+      loginUser({
         username: loginUsernameRef.current.value,
-        password: loginPasswordRef.current.value}));
-    };
-    if(error) {
-        console.log(error);
-    }
+        password: loginPasswordRef.current.value,
+      })
+    );
+
+  };
+  const onRegisterHandler = async (event) => {
+    const { firstName, lastName, username, password, email, passwordConfirm } =
+      registerRef.current;
+    event.preventDefault();
+
+    dispatch(
+      registerUser({
+        firstName: firstName.value,
+        lastName: lastName.value,
+        user: username.value,
+        password: password.value,
+        email: email.value,
+        passwordConfirm: passwordConfirm.value,
+      })
+    );
+  };
 
   return (
     <>
-    {props.isLogin && 
-    <form className={classes.form} onSubmit={onLoginHandler}>
-        {props.error && <div className={classes.form__error}>{props.error}</div>}
-        <div className={classes.form__control}>
+      {loginRegisterFormType === 'signin' && (
+        <form className={classes.form} onSubmit={onLoginHandler}>
+          {error && (
+            <div className={classes.form__error}>{error}</div>
+          )}
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Username</label>
-            <input ref={loginUsernameRef} className={classes.form__input} type='text'/>
-        </div>
-        <div className={classes.form__control}>
+            <input
+              ref={loginUsernameRef}
+              className={classes.form__input}
+              type="text"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Password</label>
-            <input ref={loginPasswordRef} className={classes.form__input} type='password' />
-        </div>
-        <input className={classes.form__btn__submit} type='submit' value='Sign In' />
-    </form>
-    }
-    {!props.isLogin &&
-    <form className={classes.form}>
-        {props.error && <div className={classes.form__error}>{props.error}</div>}
-        <div className={classes.form__control}>
+            <input
+              ref={loginPasswordRef}
+              className={classes.form__input}
+              type="password"
+            />
+          </div>
+          <input
+            className={classes.form__btn__submit}
+            type="submit"
+            value="Sign In"
+          />
+        </form>
+      )}
+      {loginRegisterFormType === 'signup' && (
+        <form className={classes.form} onSubmit={onRegisterHandler}>
+          {error && (
+            <div className={classes.form__error}>{error}</div>
+          )}
+          <div className={classes.form__control}>
             <label className={classes.form__label}>First Name</label>
-            <input className={classes.form__input} type='text' />
-        </div>
-        <div className={classes.form__control}>
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['firstName'] = el)}
+              type="text"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Last Name</label>
-            <input className={classes.form__input} type='text' />
-        </div>
-        <div className={classes.form__control}>
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['lastName'] = el)}
+              type="text"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Username</label>
-            <input className={classes.form__input} type='text' />
-        </div>
-        <div className={classes.form__control}>
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['username'] = el)}
+              type="text"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Email</label>
-            <input className={classes.form__input} type='email'/>
-        </div>
-        <div className={classes.form__control}>
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['email'] = el)}
+              type="email"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Password</label>
-            <input className={classes.form__input} type='password' />
-        </div>
-        <div className={classes.form__control}>
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['password'] = el)}
+              type="password"
+            />
+          </div>
+          <div className={classes.form__control}>
             <label className={classes.form__label}>Repeat Password</label>
-            <input className={classes.form__input} type='password' />
-        </div>
-        <input className={classes.form__btn__submit} type='submit' value='Sign Up' />
-    </form>}
+            <input
+              className={classes.form__input}
+              ref={(el) => (registerRef.current['passwordConfirm'] = el)}
+              type="password"
+            />
+          </div>
+          <input
+            className={classes.form__btn__submit}
+            type="submit"
+            value="Sign Up"
+          />
+        </form>
+      )}
     </>
-  )
-}
-export default Form
+  );
+};
+export default Form;

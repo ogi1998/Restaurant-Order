@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { uiActions } from "./store/uiSlice";
 
 import './App.css';
+import Overview from "./components/pages/Overview";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const App = () => {
     <Navbar onShowSignIn={ShowSignIn} onShowSignUp={ShowSignUp}  />
     <Routes>
       <Route path="/" element={<Landing />} />
+      <Route path="/overview" element={<Overview />} />
     </Routes>
     <Footer />
     </>
