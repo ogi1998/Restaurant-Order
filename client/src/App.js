@@ -9,16 +9,16 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const token = useSelector(state => state.user.token);
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
-
+  console.log(isLoggedIn);
   // Navigating doesnt work
   return (
     <>
     <Navbar/>
     <Routes>
-      <Route path="/overview" element={token === '' ? <Navigate to='/' /> : <Overview />} />
       <Route path="/" element={<Landing />} />
+      <Route path="/overview" element={isLoggedIn ? <Overview /> : <Navigate to='/' /> } />
     </Routes>
     <Footer />
     </>

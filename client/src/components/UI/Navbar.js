@@ -6,7 +6,7 @@ import { uiActions } from "../../store/uiSlice";
 import { userActions } from '../../store/userSlice';
 
 const Navbar = () => {
-  const token = useSelector(state => state.user.token);
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
   const dispatch = useDispatch();
 
@@ -20,13 +20,13 @@ const Navbar = () => {
             <a href='/' className={classes.nav__item}><FontAwesomeIcon icon={faHouse} /> Home</a>
             <a href='/' className={classes.nav__item}><FontAwesomeIcon icon={faAt} /> Menu</a>
             <a href='/' className={classes.nav__item}><FontAwesomeIcon icon={faAddressBook} /> Contacts</a>
-            {token === '' && 
+            {!isLoggedIn && 
             <>
             <button onClick={showSignIn}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign in</button>
             <button onClick={showSignUp}  className={`${classes.nav__item} ${classes.nav__item__light}`}>Sign up</button>
             </>
           }   
-          {token !== '' && <button onClick={signOut}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign Out</button>}
+          {isLoggedIn && <button onClick={signOut}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign Out</button>}
         </div>
     </nav>
   )

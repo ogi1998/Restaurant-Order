@@ -6,6 +6,7 @@ import { loginUser, registerUser } from '../../store/userActions';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { uiActions } from '../../store/uiSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Form = () => {
 
     if (error === '') {
       navigate('/overview');
+      dispatch(uiActions.hideForm());
     }
   };
   const onRegisterHandler = async (event) => {
@@ -52,6 +54,7 @@ const Form = () => {
 
     if (error === '') {
       navigate('/overview');
+      dispatch(uiActions.hideForm());
     }
   };
 
