@@ -20,6 +20,17 @@ const userSlice = createSlice({
             state.user = {};
             state.token = '';
             state.isLoggedIn = false;
+
+            sessionStorage.removeItem('user');
+            sessionStorage.removeItem('token');
+        },
+        getUserFromSession(state) {
+            if(sessionStorage.getItem('token') != null) {
+                state.user = JSON.parse(sessionStorage.getItem('user'));
+                state.token = sessionStorage.getItem('token');
+                state.isLoggedIn = true;
+
+            }
         }
 
     }

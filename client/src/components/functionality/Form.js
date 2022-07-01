@@ -23,18 +23,21 @@ const Form = () => {
 
   const onLoginHandler = async (event) => {
     event.preventDefault();
-
+    if (error === '') {
+      dispatch(uiActions.hideForm());
+    }
+    
     dispatch(
       loginUser({
         username: loginUsernameRef.current.value,
         password: loginPasswordRef.current.value,
       })
-    );
+      );
 
-    if (error === '') {
-      navigate('/overview');
-      dispatch(uiActions.hideForm());
-    }
+
+
+
+
   };
   const onRegisterHandler = async (event) => {
     event.preventDefault();

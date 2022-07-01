@@ -6,19 +6,26 @@ import Overview from "./components/pages/Overview";
 import './App.css';
 
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "./store/userSlice";
+import { useEffect } from "react";
 
 const App = () => {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(userActions.getUserFromSession());
+  }, [dispatch]);
 
-  console.log(isLoggedIn);
   // Navigating doesnt work
   return (
     <>
     <Navbar/>
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/overview" element={isLoggedIn ? <Overview /> : <Navigate to='/' /> } />
+      <Route path="/" element={!isLoggedIn ? <Landing /> : <Navigate to='/overview' />} />
+      {isLoggedIn && <Route path="/overview" element={<Overview />} />}
+      {!isLoggedIn && <Route path="/overview" element={<Navigate to='/' />} />}
     </Routes>
     <Footer />
     </>
