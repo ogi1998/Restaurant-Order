@@ -64,6 +64,8 @@ export const registerUser = userEl => {
                 user: data.user,
                 token: data.token
             }));
+            sessionStorage.setItem('user', JSON.stringify(data.user));
+            sessionStorage.setItem('token', data.token);
         }
     }
 };

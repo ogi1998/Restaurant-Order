@@ -17,8 +17,6 @@ const App = () => {
   useEffect(() => {
     dispatch(userActions.getUserFromSession());
   }, [dispatch]);
-
-  // Navigating doesnt work
   return (
     <>
     <Navbar/>
