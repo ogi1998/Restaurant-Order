@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   loginRegisterFormType: '',
-  loginRegisterError: ''
+  loginRegisterError: '',
+  restaurantError: ''
 };
 
 const uiSlice = createSlice({
@@ -19,9 +20,12 @@ const uiSlice = createSlice({
       state.loginRegisterFormType = '';
       state.loginRegisterError = '';
     },
-    addError(state, action) {
+    addLoginRegisterError(state, action) {
       state.loginRegisterError = action.payload.error
-  }
+    },
+    addRestaurantError(state, action) {
+      state.restaurantError = action.payload.error
+    }
   },
 });
 

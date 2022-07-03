@@ -5,15 +5,14 @@ import { useRef } from 'react';
 import { loginUser, registerUser } from '../../store/userActions';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { uiActions } from '../../store/uiSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const error = useSelector((state) => state.ui.loginRegisterError);
+
+  const loginRegisterError = useSelector(state => state.ui.loginRegisterError);
+
   const loginRegisterFormType = useSelector(
-    (state) => state.ui.loginRegisterFormType
+    state => state.ui.loginRegisterFormType
   );
 
   const registerRef = useRef({});
@@ -23,22 +22,14 @@ const Form = () => {
 
   const onLoginHandler = async (event) => {
     event.preventDefault();
-    if (error === '') {
-      dispatch(uiActions.hideForm());
-    }
-    
     dispatch(
       loginUser({
         username: loginUsernameRef.current.value,
         password: loginPasswordRef.current.value,
       })
-      );
-
-
-
-
-
+    );
   };
+
   const onRegisterHandler = async (event) => {
     event.preventDefault();
     const { firstName, lastName, username, password, email, passwordConfirm } =
@@ -48,24 +39,19 @@ const Form = () => {
       registerUser({
         firstName: firstName.value,
         lastName: lastName.value,
-        user: username.value,
+        username: username.value,
         password: password.value,
         email: email.value,
         passwordConfirm: passwordConfirm.value,
       })
     );
-
-    if (error === '') {
-      navigate('/overview');
-      dispatch(uiActions.hideForm());
-    }
   };
 
   return (
     <>
       {loginRegisterFormType === 'signin' && (
         <form className={classes.form} onSubmit={onLoginHandler}>
-          {error && <div className={classes.form__error}>{error}</div>}
+          {loginRegisterError && <div className={classes.form__error}>{loginRegisterError}</div>}
           <div className={classes.form__control}>
             <label className={classes.form__label}>Username</label>
             <input
@@ -91,7 +77,7 @@ const Form = () => {
       )}
       {loginRegisterFormType === 'signup' && (
         <form className={classes.form} onSubmit={onRegisterHandler}>
-          {error && <div className={classes.form__error}>{error}</div>}
+          {loginRegisterError && <div className={classes.form__error}>{loginRegisterError}</div>}
           <div className={classes.form__control}>
             <label className={classes.form__label}>First Name</label>
             <input

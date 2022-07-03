@@ -10,6 +10,7 @@ import userRoutes from './routes/user.js';
 
 const app = express();
 
+app.use(express.static('./assets')); 
 
 
 app.use(express.json());

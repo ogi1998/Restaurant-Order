@@ -18,7 +18,7 @@ const App = () => {
     dispatch(userActions.getUserFromSession());
   }, [dispatch]);
   return (
-    <>
+    <>  
     <Navbar/>
     <Routes>
       <Route path="/" element={!isLoggedIn ? <Landing /> : <Navigate to='/overview' />} />

@@ -14,24 +14,22 @@ export const loginUser = userEl => {
             });
 
             const data = await response.json();
-
             return data;
         }
 
         const data = await sendRequest();
-
-        if (data.status === 'error') {
-            dispatch(uiActions.addError({
-                error: data.message
-            }));
-        } else {
-            dispatch(userActions.createUser({
-                user: data.user,
-                token: data.token
-            }));
-            sessionStorage.setItem('user', JSON.stringify(data.user));
-            sessionStorage.setItem('token', data.token);
-        }
+            if (data.status === 'error') {
+                dispatch(uiActions.addLoginRegisterError({
+                    error: data.message
+                }));
+            } else {
+                dispatch(userActions.createUser({
+                    user: data.user,
+                    token: data.token
+                }));
+                sessionStorage.setItem('user', JSON.stringify(data.user));
+                sessionStorage.setItem('token', data.token);
+            }
     }
 };
 
@@ -48,15 +46,12 @@ export const registerUser = userEl => {
             });
 
             const data = await response.json();
-            console.log(data);
-
             return data;
         }
-
         const data = await sendRequest();
 
         if (data.status === 'error') {
-            dispatch(uiActions.addError({
+            dispatch(uiActions.addLoginRegisterError({
                 error: data.message
             }));
         } else {
