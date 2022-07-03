@@ -1,25 +1,14 @@
-import { useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { getRestaurants } from '../../store/restaurantActions';
-import { uiActions } from '../../store/uiSlice';
+import Restaurants from "../functionality/Restaurants";
+
+import classes from './Overview.module.css';
 
 const Overview = () => {
-  const dispatch = useDispatch();
-
-  const token = useSelector(state => state.user.token);
-
-  const restaurants = useSelector(state => state.restaurant.restaurants);
-
-  useEffect(() => {
-    dispatch(getRestaurants(token));
-    dispatch(uiActions.hideForm());
-  }, []);
 
 
   
   return (
-    <div>
-      {restaurants.length && restaurants.map(item => <h1>{item.name}</h1>)}
+    <div className={classes.overview}>
+      <Restaurants />
     </div>
   )
 }

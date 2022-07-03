@@ -1,0 +1,5 @@
+.overview {
+  background-color: var(--color-red);
+  border-bottom-right-radius: 5rem;
+  border-bottom-left-radius: 5rem;
+}
