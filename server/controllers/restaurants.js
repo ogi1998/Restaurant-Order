@@ -4,7 +4,7 @@ import { getErrors } from './errorController.js';
 
 export const getRestaurants = async (req, res) => {
     try {
-        const restaurants = await Restaurant.find({});
+        const restaurants = await Restaurant.find({}).select('_id name workStart workEnd imagePath description deliveryTime deliveryPrice');
 
         res.status(200).json({status: 'success', data: restaurants});
     } catch(error) {
@@ -35,11 +35,11 @@ export const deleteRestaurant = async (req, res) => {
 
 export const getMeals = async (req, res) => {
     try {
-        const meals = await Restaurant.findById(req.params.id).select('meals.name meals.description meals.price meals._id');
+        const meals = await Restaurant.findById(req.params.id).select('_id name meals.name meals.description meals.price meals._id meals.type meals.ingredients meals.categories');
 
         res.status(200).json({status: 'success', data: meals});
     } catch(error) {
-        res.status(400).json({status: 'error', message: error.messaage});
+        res.status(400).json({status: 'error', message: getErrors(error, Restaurant)});
     } 
 };
 

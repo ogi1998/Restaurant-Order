@@ -1,0 +1,64 @@
+.meal{
+    background-color: var(--color-white-pink);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 25%;
+    transition: linear .3s;
+    position: relative;
+}
+
+.meal:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.meal__name {
+    font-size: 2rem;
+    color: var(--color-black);
+}
+
+.meal__description {
+    font-size: 1.4rem;
+    color: var(--color-gray-form);
+    font-style: italic;
+}
+
+.meal__ingredients {
+    padding: 1rem 0;
+}
+
+.meal__ingredients span {
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.meal__categories {
+    padding: 1rem 0;
+}
+
+.meal__categories span {
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    background-color: var(--color-red-light);
+    color: var(--color-white);
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.meal__price {
+    font-size: 3rem;
+    display: block;
+    padding: 1rem 0;
+}
+.meal__btn__add {
+    position: absolute;
+    right: 5%;
+    top: 45%;
+    font-size: 3rem;
+    color: var(--color-yellow);
+}

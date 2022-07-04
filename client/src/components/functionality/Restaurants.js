@@ -13,7 +13,7 @@ const Restaurants = () => {
   const token = useSelector(state => state.user.token);
 
   const restaurants = useSelector(state => state.restaurant.restaurants);
-
+  
   useEffect(() => {
     dispatch(getRestaurants(token));
     dispatch(uiActions.hideForm());
@@ -30,6 +30,8 @@ const Restaurants = () => {
         deliveryTime={item.deliveryTime}
         workStart={item.workStart}
         workEnd={item.workEnd}
+        key={item._id}
+        id={item._id}
 
         />)}
       </div>
