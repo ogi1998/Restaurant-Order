@@ -16,7 +16,7 @@ const MealsItem = (props) => {
             {props.categories.map((category,index) => <span className={classes.meal__ingredients__item} key={index}>{category}</span>)}
         </div>
         <span className={classes.meal__price}>Price: {props.price}$</span>
-        <span className={classes.meal__btn__add}><FontAwesomeIcon icon={faPlus} /></span>
+        <span onClick={props.onAddItem} className={classes.meal__btn__add}><FontAwesomeIcon icon={faPlus} /></span>
     </div>
   )
 }

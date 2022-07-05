@@ -4,10 +4,11 @@ import {faHouse, faAt, faAddressBook, faCartShopping} from '@fortawesome/free-so
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from "../../store/uiSlice";
 import { userActions } from '../../store/userSlice';
-import { cartActions } from '../../store/cartSlice';
 
 const Navbar = () => {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
+  const quantity = useSelector(state => state.cart.quantity);
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,7 @@ const Navbar = () => {
   const showSignUp = () => dispatch(uiActions.showSignUp());
   const signOut = () => dispatch(userActions.logoutUser());
   const showCart = () => dispatch(uiActions.showCart());
+
   return (
     <nav className={classes.nav}>
         <h1 className={classes.nav__logo}>Cloggy's</h1>
@@ -30,7 +32,7 @@ const Navbar = () => {
           }   
           {isLoggedIn &&
           <> 
-          <button  onClick={showCart} className={`${classes.nav__item} ${classes.nav__item__dark}`}>Cart <FontAwesomeIcon icon={faCartShopping} />: 0</button>
+          <button  onClick={showCart} className={`${classes.nav__item} ${classes.nav__item__dark}`}>Cart <FontAwesomeIcon icon={faCartShopping} />: {quantity}</button>
           <button onClick={signOut}  className={`${classes.nav__item} ${classes.nav__item__dark}`}>Sign Out</button>
           </>
           }

@@ -1,0 +1,52 @@
+.cart {
+  width: 80%;
+}
+
+.cart__restaurant {
+  font-size: 3rem;
+}
+
+.cart__items {
+  font-size: 2rem;
+  list-style-type: none;
+  margin-left: 2rem;
+}
+
+.cart__item {}
+
+.cart__item span {
+  font-size: 2.5rem;
+}
+
+.cart__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.cart__total__quantity {
+  font-size: 2.5rem;
+}
+
+.cart__total__amount {
+  font-size: 2.5rem;
+}
+
+.cart__button__container {
+  text-align: center;
+  margin: 2rem 0;
+}
+.cart__button {
+  width: 50%;
+  border: none;
+  font-size: 2rem;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  padding: 1rem;
+  border-radius: 5px;
+}
+.cart__button:hover {
+  cursor: pointer;
+  background-color: var(--color-red-light);
+}

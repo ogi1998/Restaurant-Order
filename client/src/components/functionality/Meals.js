@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { cartActions } from "../../store/cartSlice";
 import { getMeals } from "../../store/restaurantActions";
 
 import classes from './Meals.module.css';
@@ -11,6 +12,7 @@ const RestaurantDetails = () => {
 
     const {id} = useParams();
     const token = useSelector(state => state.user.token);
+    const cart = useSelector(state => state.cart);
     const activeRestaurant = useSelector(state => state.restaurant.activeRestaurant);
 
     const filteredMeals = {};
@@ -26,6 +28,8 @@ const RestaurantDetails = () => {
         dispatch(getMeals(token, id));
     }, [dispatch, id, token]);
 
+    console.log(cart);
+
     return (
         <div className={classes.meals}>
             <h2 className={classes.meals__title}>{activeRestaurant.name}</h2>
@@ -40,6 +44,7 @@ const RestaurantDetails = () => {
                         categories={meal.categories}
                         price={meal.price}
                         key={meal._id}
+                        onAddItem={() => dispatch(cartActions.addItemToCart({restaurant_id: activeRestaurant.id, restaurant_name: activeRestaurant.name, meal}))}
                         />)}
                     </div>
                 </div>
@@ -56,6 +61,7 @@ const RestaurantDetails = () => {
                         categories={meal.categories}
                         price={meal.price}
                         key={meal._id}
+                        onAddItem={() => dispatch(cartActions.addItemToCart({restaurant_id: activeRestaurant.id, restaurant_name: activeRestaurant.name, meal}))}
                         />)}
                     </div>
                 </div>
@@ -72,6 +78,7 @@ const RestaurantDetails = () => {
                         categories={meal.categories}
                         price={meal.price}
                         key={meal._id}
+                        onAddItem={() => dispatch(cartActions.addItemToCart({restaurant_id: activeRestaurant.id, restaurant_name: activeRestaurant.name, meal}))}
                         />)}
                     </div>
                 </div>
@@ -87,6 +94,7 @@ const RestaurantDetails = () => {
                         categories={meal.categories}
                         price={meal.price}
                         key={meal._id}
+                        onAddItem={() => dispatch(cartActions.addItemToCart({restaurant_id: activeRestaurant.id, restaurant_name: activeRestaurant.name, meal}))}
                         />)}
                     </div>
                 </div>
