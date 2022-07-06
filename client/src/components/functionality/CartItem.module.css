@@ -1,0 +1,17 @@
+.cart__restaurant {
+    font-size: 3rem;
+}
+
+.cart__items {
+    font-size: 2rem;
+    list-style-type: none;
+    margin-left: 2rem;
+  }
+  
+  .cart__item {
+  }
+  
+  .cart__item span {
+    font-size: 2.5rem;
+    color: var(--color-black);
+  }
