@@ -2,10 +2,6 @@
   width: 80%;
 }
 
-
-
-
-
 .cart__footer {
   display: flex;
   flex-direction: row;
@@ -26,17 +22,29 @@
 .cart__button__container {
   text-align: center;
   margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
 }
 .cart__button {
-  width: 50%;
+  width: 45%;
   border: none;
   font-size: 2rem;
-  background-color: var(--color-red);
+  
   color: var(--color-white);
   padding: 1rem;
   border-radius: 5px;
 }
-.cart__button:hover {
+.cart__button__red {
+  background-color: var(--color-red);
+}
+.cart__button__blue {
+  background-color: var(--color-blue);
+}
+.cart__button__red:hover {
   cursor: pointer;
   background-color: var(--color-red-light);
+}
+.cart__button__blue:hover {
+  cursor: pointer;
+  background-color: var(--color-blue-light);
 }

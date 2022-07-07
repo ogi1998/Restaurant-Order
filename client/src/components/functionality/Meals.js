@@ -12,7 +12,6 @@ const RestaurantDetails = () => {
 
     const {id} = useParams();
     const token = useSelector(state => state.user.token);
-    const cart = useSelector(state => state.cart);
     const activeRestaurant = useSelector(state => state.restaurant.activeRestaurant);
 
     const filteredMeals = {};
@@ -27,8 +26,6 @@ const RestaurantDetails = () => {
     useEffect(() => {
         dispatch(getMeals(token, id));
     }, [dispatch, id, token]);
-
-    console.log(cart);
 
     return (
         <div className={classes.meals}>

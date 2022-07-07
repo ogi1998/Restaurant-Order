@@ -11,10 +11,13 @@ const transationSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Restaurant'
             },
-            meals: {
-                mealId: String,
+            meals: [{
+                mealId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Restaurant'
+                },
                 quantity: Number
-            }
+            }]
         }
     ],
     totalQuantity: Number,

@@ -6,7 +6,7 @@ const CartItem = (props) => {
     <h2 className={classes.cart__restaurant}>{props.name}</h2>
     <ul className={classes.cart__items}>
       {props.meals.map((meal) => (
-        <li className={classes.cart__item}>
+        <li className={classes.cart__item} key={meal._id}>
           {meal.name} <span className={classes.cart__item__price}>{meal.price}$</span><span> x{meal.quantity}</span>
         </li>
       ))}
