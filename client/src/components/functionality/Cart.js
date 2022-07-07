@@ -25,7 +25,6 @@ const Cart = () => {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
-
   const onBuyHandler = async () => {
     const transaction = {
       user: user.user._id,
@@ -40,10 +39,10 @@ const Cart = () => {
         },
       ),
     };
-
-
     addToCart(transaction)
     .then(data => console.log(data));
+    dispatch(cartActions.clearCart());
+    dispatch(uiActions.hideForm());
   };
 
   return (
