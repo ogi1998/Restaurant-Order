@@ -21,7 +21,11 @@ const transationSchema = new mongoose.Schema({
         }
     ],
     totalQuantity: Number,
-    totalAmount: Number
+    totalAmount: Number,
+    creationDate: {
+        type: Date,
+        default: Date.now(),
+      },
 });
 
 const Transaction = mongoose.model('Transaction', transationSchema);

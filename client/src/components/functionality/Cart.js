@@ -73,7 +73,7 @@ const Cart = () => {
           className={`${classes.cart__button} ${classes.cart__button__red}`}>
           Clear Cart
         </button>
-        <button className={`${classes.cart__button} ${classes.cart__button__blue}`} onClick={onBuyHandler}>Buy</button>
+        <button className={`${classes.cart__button} ${classes.cart__button__blue}`} onClick={onBuyHandler}>Make an Order</button>
       </div>
     </div>
   );
