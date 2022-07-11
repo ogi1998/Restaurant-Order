@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import path from "path";
+import path, {dirname} from "path";
+import { fileURLToPath } from "url";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -11,6 +12,8 @@ import userRoutes from "./routes/user.js";
 import transactionRoutes from "./routes/transaction.js";
 
 const app = express();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.static("./assets"));
 
