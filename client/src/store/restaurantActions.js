@@ -5,7 +5,7 @@ export const getRestaurants = token => {
     return async dispatch => {
 
         const sendRequest = async () => {
-            const response = await fetch('http://localhost:5000/restaurant', {
+            const response = await fetch('/restaurant', {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -36,7 +36,7 @@ export const getRestaurants = token => {
 export const getMeals = (token, id) => {
     return async dispatch => {
         const sendRequest = async () => {
-            const response = await fetch(`http://localhost:5000/restaurant/${id}/meals`, {
+            const response = await fetch(`/restaurant/${id}/meals`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

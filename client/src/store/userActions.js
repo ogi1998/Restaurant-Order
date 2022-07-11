@@ -4,7 +4,7 @@ import { uiActions } from "./uiSlice";
 export const loginUser = userEl => {
     return async dispatch => {
         const sendRequest = async () => {
-            const response = await fetch('http://localhost:5000/user/login', {
+            const response = await fetch('/user/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -36,7 +36,7 @@ export const loginUser = userEl => {
 export const registerUser = userEl => {
     return async dispatch => {
         const sendRequest = async () => {
-            const response = await fetch('http://localhost:5000/user/register', {
+            const response = await fetch('/user/register', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

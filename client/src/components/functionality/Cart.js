@@ -6,7 +6,7 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const addToCart = async (cart) => {
-  const response = await fetch("http://localhost:5000/transaction", {
+  const response = await fetch("/transaction", {
     method: "POST",
     headers: {
       Accept: "application/json",
