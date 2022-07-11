@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "engines": {
+    "node": "16.15.0"
   },
   "author": "Ognjen Vujasinovic",
   "license": "ISC",
