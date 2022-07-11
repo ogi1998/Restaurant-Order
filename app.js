@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
 import path, {dirname} from "path";
 import { fileURLToPath } from "url";
 
@@ -21,7 +20,6 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 app.use("/restaurant", restaurantRoutes);
 app.use("/user", userRoutes);
