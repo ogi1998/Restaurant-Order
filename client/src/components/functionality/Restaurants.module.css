@@ -1,0 +1,17 @@
+.restaurants {
+  padding: 5rem;
+
+}
+
+.restaurants__title {
+  color: var(--color-yellow);
+  font-size: 4rem;
+}
+
+.restaurants__list {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5%;
+}

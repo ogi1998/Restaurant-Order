@@ -1,0 +1,41 @@
+.nav {
+    background-color: var(--color-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.nav__logo {
+    font-family: 'Lobster', cursive;
+    font-size: 3rem;
+}
+.nav__navigation {
+    display: block;
+}
+.nav__item {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    font-size: 2rem;
+    font-weight: bold;
+    padding: .75rem 2rem;
+    border-radius: 1rem;
+    transition: .5s ease-in;
+    border: none;
+}
+.nav__item:hover {
+    background-color: var(--color-red-light);
+    cursor: pointer;
+}
+.nav__item__dark {
+    background-color: var(--color-red-dark);
+    border-radius: 0;
+}
+.nav__item__light {
+    background-color: var(--color-red-light);
+    border-radius: 0;
+}
+.nav__item:not(:last-child) {
+    margin-right: 2rem;
+}

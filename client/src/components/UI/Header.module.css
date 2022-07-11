@@ -1,0 +1,110 @@
+.header {
+    height: 100vh;
+    background: url('../../img/landing/background.png');
+    background-size: 100% 100%;
+}
+.header__main {
+    display: flex;
+    height: 97.5vh;
+}
+
+/* LEFT SIDE */
+
+.header__main__left {
+    width: 55%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+.header__text__container {
+    padding-bottom: 10rem;
+}
+.header__title {
+    font-size: 8rem;
+    color: var(--color-yellow);
+    text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
+}
+.header__subtitle {
+    color: var(--color-yellow-light);
+    font-weight: 400;
+    font-size: 4rem;
+}
+.header__btn {
+    background-color: var(--color-yellow-light);
+    color: var(--color-black);
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 2rem 6rem;
+    border-radius: .5rem;
+    transition: .3s ease-in;
+    backface-visibility: hidden;
+}
+.header__btn:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 30px rgba(0,0,0,0.7);
+    transform: translateY(-2px);
+}
+
+/* RIGHT SIDE */
+
+.header__main__right {
+    position: relative;
+    width: 50%;
+}
+.header__img__nuggets {
+    width: 30rem;
+    position: absolute;
+    top: 25%;
+    left: 0;
+}
+
+.header__img__pizza {
+    position: absolute;
+    width: 20rem;
+    border: 3rem solid var(--color-red);
+    border-radius: 50%;
+    top: 20%;
+    left: 20rem;
+}
+
+.header__img__eggs {
+    width: 20rem;
+    position: absolute;
+    border: 3rem solid var(--color-red);
+    border-radius: 50%;
+    bottom: 15%;
+    left: -2rem;
+}
+
+.header__img__whiskey {
+    width: 15rem;
+    position: absolute;
+    right: 20%;
+    top: 45%;
+}
+.header__img__whiskey:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,1);
+    transform: scale(1.1);
+    border-radius: 50%;
+}
+
+.header__img__wine {
+    width: 15rem;
+    position: absolute;
+    top: 62.5%;
+    right: 5%;
+}
+
+.header__img__wine:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,1);
+    transform: scale(1.1);
+    border-radius: 50%;
+}
+

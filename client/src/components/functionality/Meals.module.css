@@ -1,0 +1,29 @@
+.meals {
+    background-color: var(--color-red);
+    margin: 5rem;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.meals__title {
+    color: var(--color-yellow);
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+.meals__category {
+    padding: 1rem 0;
+    padding-left: 10rem;
+}
+
+.meals__type {
+    color: var(--color-yellow-light);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.meals__list {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
